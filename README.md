@@ -9,9 +9,6 @@ Features
 🎉 Confetti Effect: A confetti animation celebrates a positive response.
 Usage
 Clone or download the repository to your local machine:
-bash
-Copy code
-git clone https://github.com/your-username/romantic-interactive-webpage.git
 Open the index.html file in any modern web browser.
 How to Customize
 Change Background Music: Replace the URL in the <audio> tag with a song of your choice.
