@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date with 💗💗? </title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
+    <style> 
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            transition: background 2s ease;
+        }
+
+        body.gradient-1 { background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%); }
+        body.gradient-2 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        body.gradient-3 { background: linear-gradient(135deg, #ffd1ff 0%, #fff0f0 100%); }
+
+        .page {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            background: #2ecc71;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .button:hover::after {
+            left: 100%;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .no-btn {
+            background: #e74c3c;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .coffee-icon {
+            font-size: 50px;
+            margin: 20px;
+            position: relative;
+        }
+
+        @keyframes steam {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            100% { transform: translateY(-20px) scale(1.5); opacity: 0; }
+        }
+
+        .steam {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            color: #8395a7;
+            animation: steam 2s infinite;
+            pointer-events: none;
+        }
+
+        .pleading-message {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #2c3e50;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            animation: fadeInOut 2s forwards;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .shayari {
+            font-family: 'Dancing Script', cursive;
+            color: #666;
+            line-height: 1.8;
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 3px solid #2ecc71;
+            background: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shayari::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(46,204,113,0.1), transparent);
+            animation: shayariGlow 3s infinite;
+        }
+
+        @keyframes shayariGlow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            animation: confetti 3s ease-out forwards;
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(0) rotateZ(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="https://archive.org/download/stephen-sanchez-until-i-found-you/Stephen%20Sanchez%20Until%20I%20Found%20You.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="page1" class="page active">
+        <h1>Here's Something Just for You 💫</h1>
+        <button class="button" onclick="startExperience()">Let's Begin 🌟</button>
+    </div>
+
+    <div id="page2" class="page">
+        <h1>Hey Megha! 👋</h1>
+        <button class="button" onclick="showPage('page3')">Can You Lend a Hand with Something Special? 💌</button>
+    </div>
+
+    <div id="page3" class="page">
+        <div class="coffee-icon">
+            ☕
+            <div class="steam">~</div>
+        </div>
+        <h1>Coffee Date?</h1>
+        <p>Can I steal a moment of your time over a warm cup of coffee?</p>
+        <div class="buttons">
+            <button class="button" id="yesBtn" onclick="handleYes()">Yes, of course!🎉</button>
+            <button class="button no-btn" id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()">I Need More Convincing 🙈</button>
+        </div>
+    </div>
+
+    <div id="page4" class="page">
+        <h1>I knew it! Woohoooo! 🎉</h1>
+        <div class="shayari">
+            Chai ki ek pyaali ho, ya coffee ka ek sip,<br>
+            Bas tumhara saath ho, toh ban jaaye perfect trip.<br>
+            Ek din ka waqt de, kar diya hai yeh ehsaan,<br>
+            Teri muskaan ke saath, vo din ho jaaye ga jasan-e-jahaan.
+        </div>
+        <p>- Abhi ❤️</p>
+        <p class="secret-message" style="display: none; color: #2ecc71; font-family: 'Dancing Script', cursive; font-size: 1.2em;">
+            Get ready to be treated to the best coffee of your life! ✨
+        </p>
+    </div>
+
+    <script>
+        let noCount = 0;
+        let currentGradient = 1;
+        const messages = [
+            "Please think again! 🥺",
+            "You're breaking my heart! 💔",
+            "Just one coffee! ☕",
+            "I promise it'll be fun! ✨",
+            "Come on, be adventurous! 🌟",
+            "I'll make it memorable! 🎉",
+            "Life is short, say yes! 🌺",
+            "Pretty please? ❤️",
+            "The coffee is getting cold... ☕"
+        ];
+
+        let currentMessage = null;
+
+        function startExperience() {
+            playMusic();
+            showPage('page2');
+            startBackgroundAnimation();
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function playMusic() {
+            const audio = document.getElementById('bgMusic');
+            audio.play().catch(console.log);
+        }
+
+        function startBackgroundAnimation() {
+            setInterval(() => {
+                currentGradient = (currentGradient % 3) + 1;
+                document.body.className = `gradient-${currentGradient}`;
+            }, 5000);
+        }
+
+        function moveButton() {
+            const button = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            
+            noCount++;
+
+            if (noCount >= 12) {
+                button.style.display = 'none';
+                return;
+            } else {
+                const maxX = window.innerWidth - button.clientWidth;
+                const maxY = window.innerHeight - button.clientHeight;
+                button.style.position = 'fixed';
+                button.style.left = `${Math.random() * maxX}px`;
+                button.style.top = `${Math.random() * maxY}px`;
+            }
+
+            showPleadingMessage();
+            makeYesButtonBigger();
+            makeNoButtonSmaller();
+        }
+
+        function showPleadingMessage() {
+            if (currentMessage) {
+                currentMessage.remove();
+            }
+
+            const message = document.createElement('div');
+            message.className = 'pleading-message';
+            message.textContent = messages[noCount % messages.length];
+            document.querySelector('#page3').appendChild(message);
+            
+            currentMessage = message;
+            setTimeout(() => {
+                if (message === currentMessage) {
+                    message.remove();
+                    currentMessage = null;
+                }
+            }, 2000);
+        }
+
+        function makeYesButtonBigger() {
+            const yesBtn = document.getElementById('yesBtn');
+            const currentScale = parseFloat(yesBtn.style.transform?.match(/scale\((.*?)\)/)?.[1] || 1);
+            yesBtn.style.transform = `scale(${Math.min(2, currentScale + 0.1)})`;
+        }
+
+        function makeNoButtonSmaller() {
+            const noBtn = document.getElementById('noBtn');
+            const currentScale = parseFloat(noBtn.style.transform?.match(/scale\((.*?)\)/)?.[1] || 1);
+            noBtn.style.transform = `scale(${Math.max(0.3, currentScale - 0.1)})`;
+        }
+
+        function handleYes() {
+            document.getElementById('noBtn').style.display = 'none';
+            createConfetti();
+            showPage('page4');
+            setTimeout(() => {
+                document.querySelector('.secret-message').style.display = 'block';
+            }, 1500);
+        }
+
+        function createConfetti() {
+            for(let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        document.getElementById('noBtn')?.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+    </script>
+</body>
+</html>
